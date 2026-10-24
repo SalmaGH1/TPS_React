@@ -1,38 +1,200 @@
-.App {
-  text-align: center;
+/* ===== Palette (from your image) ===== */
+:root {
+  --blue: #3a6db5;
+  --navy: #1d4a85;
+  --aqua: #6ee7d8;
+  --red: #e8472b;
+  --rose: #c4766f;
+
+  --ink: #12263f;
+  --muted: #5b6b80;
+  --line: #e2e9f2;
+  --page: #f1f5fa;
+  --card: #ffffff;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  color: var(--ink);
+  background: var(--page);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* ===== Header ===== */
+.header {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-direction: row;
+  gap: 15px;
+  padding: 10px 15px;
+  background: var(--navy);
+  color: #fff;
+  border-bottom: 4px solid var(--aqua);
+  box-shadow: 0 4px 10px rgba(18, 38, 63, 0.25);
+}
+.header__logo {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  border-radius: 50%;
+  background: #fff;
+  border: 3px solid var(--aqua);
+}
+.header__title {
+  margin: 0;
+  font-size: 26px;
+  font-weight: bold;
+  letter-spacing: 1px;
 }
 
-.App-link {
-  color: #61dafb;
+/* ===== Navigation ===== */
+.nav {
+  background: var(--blue);
+  box-shadow: 0 2px 5px rgba(18, 38, 63, 0.15);
+}
+.nav__list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.nav__item {
+  padding: 14px 22px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+.nav__item:hover {
+  background: var(--aqua);
+  color: var(--navy);
+  border-bottom-color: var(--red);
+}
+.nav__item:focus-visible {
+  outline: 3px solid var(--aqua);
+  outline-offset: -3px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* ===== Profile page ===== */
+.profil {
+  padding: 30px;
+  min-height: 100vh;
+  text-align: center;
+  background: var(--page);
+}
+.profil__title {
+  margin: 0 0 10px;
+  font-size: 28px;
+  color: var(--navy);
+}
+.profil__subtitle {
+  margin: 0 0 40px;
+  font-size: 16px;
+  color: var(--muted);
+}
+.profil__grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 25px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ===== Cards (shared) ===== */
+.card {
+  width: 340px;
+  max-width: 100%;
+  margin: 20px auto;
+  padding: 20px;
+  background: var(--card);
+  border-radius: 12px;
+  border-top: 6px solid var(--blue);
+  box-shadow: 0 8px 16px rgba(18, 38, 63, 0.1);
+}
+.card--detail  { border-top-color: var(--red); text-align: center; }
+.card--general { border-top-color: var(--blue); }
+.card--other   { border-top-color: var(--aqua); }
+
+.card__title {
+  margin: 0 0 15px;
+  padding-bottom: 10px;
+  text-align: center;
+  color: var(--navy);
+  border-bottom: 2px solid var(--line);
+}
+
+/* ===== Detail card ===== */
+.detail__img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid var(--aqua);
+  box-shadow: 0 0 0 3px var(--navy);
+}
+.detail__name {
+  margin: 12px 0 0;
+  color: var(--navy);
+}
+.detail__info {
+  margin-top: 15px;
+  padding: 10px 15px;
+  text-align: left;
+  background: var(--page);
+  border-left: 4px solid var(--rose);
+  border-radius: 8px;
+}
+.detail__info p { margin: 8px 0; }
+
+/* ===== General table ===== */
+.general__table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.general__label,
+.general__value {
+  padding: 10px;
+  border-bottom: 1px solid var(--line);
+}
+.general__label {
+  width: 45%;
+  font-weight: bold;
+  color: var(--blue);
+}
+.general__value { color: var(--ink); }
+.general__table tr:last-child td { border-bottom: none; }
+
+/* ===== Other ===== */
+.other__text {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  text-align: justify;
+  color: var(--muted);
+}
+
+/* ===== Footer ===== */
+.footer {
+  padding: 18px 15px;
+  text-align: center;
+  font-size: 14px;
+  color: #fff;
+  background: var(--navy);
+  border-top: 4px solid var(--red);
+}
+
+@media (max-width: 600px) {
+  .profil { padding: 20px 12px; }
+  .header__title { font-size: 20px; }
+  .header__logo { width: 56px; height: 56px; }
 }
